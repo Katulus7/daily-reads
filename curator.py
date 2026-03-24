@@ -17,40 +17,88 @@ import anthropic
 # ─────────────────────────────────────────────────────────────────
 
 TASTE_PROFILE = """
-Reader profile (patent litigation attorney, intellectual, selective):
+This is a DOWNTIME read — tone should be like TechMeme: bite-sized, sharp, substantive
+but never dry or academic. Think "smart friend texting you something interesting" not
+"research digest." Each pick should feel like a small reward to click on.
 
-STRONG interests:
-- IP law: Federal Circuit decisions, § 101/Alice doctrine, PTAB developments, legal AI tools
-- AI/ML: interpretability research, capabilities milestones, governance & policy debates
-- Economics & policy: depth of Marginal Revolution / Works in Progress / Asterisk level
-- Roguelike / deckbuilder game design theory (Slay the Spire-tier games)
-- Organizational psychology: psychological safety, evidence-based management, firm culture
-- Minimalist design, typography, architecture, design-forward product aesthetics
-- History and narrative nonfiction
-- Developer tools, workflow automation, Python ecosystem
+CATEGORY GUIDELINES:
 
-Preferred sources and publication tier:
-  LessWrong, ACX / Astral Codex Ten, Works in Progress, Asterisk Magazine,
-  Marginal Revolution, Lawfare, Hacker News (standout posts only), ArXiv
-  (accessible papers), SSRN (IP/tech law), The Browser picks, Ribbonfarm,
-  long-form journalism (The Atlantic, Wired features), academic blogs.
+1. Movies & Shows
+   Find new releases (last 2-3 weeks) that are BOTH critically acclaimed AND
+   audience-approved. Must have strong scores on both ends — Rotten Tomatoes critic
+   score AND audience score above 80%, or equivalent Letterboxd/IMDb consensus.
+   If critics love it but audiences are cold, skip it. If audiences love it but
+   critics pan it, skip it. Both must agree it's excellent.
+   Include theatrical films and streaming shows (Netflix, HBO, Apple TV+, etc.).
+   Hard avoids: rom-coms, reality TV, anything described as a "feel-good romp."
 
-Hard avoids:
-  Hot takes under 800 words, SEO listicles, press-release rewrites,
-  social media drama, generic "AI will change everything" boosterism,
-  celebrity gossip, sports scores, crypto price speculation.
+2. Games
+   70% new releases (last 4-6 weeks, highly reviewed), 30% hidden gems from
+   the last 12 months worth revisiting.
+   The reader's taste: games with deep systems AND strong narrative or world-building.
+   Reference points: Elden Ring (challenging, rewarding exploration), Slay the Spire
+   (roguelike depth, replayability), Disco Elysium (writing-first RPG, meaningful choices),
+   Baldur's Gate 3 (rich RPG systems), Outer Wilds / Blue Prince (genuine mystery and
+   discovery), Cyberpunk 2077 (immersive open world), Last of Us (narrative craft),
+   XCOM (turn-based tactics, strategic depth).
+   Look for: deep RPGs, roguelikes, deckbuilders, tactics games, narrative adventures,
+   exploration-driven games, puzzle games with real substance.
+   Skip: twitch shooters, sports games, battle royale, mobile casual, live-service
+   games with no real ending, anything described as "cozy."
+
+3. Books
+   70% new releases (last 4-6 weeks), 30% hidden gems from the last 12 months.
+   The reader's taste: literary sci-fi (Station Eleven, Never Let Me Go, Hyperion tier),
+   narrative nonfiction with novelistic quality (Bad Blood, The Wager tier),
+   literary fiction with structural ambition (Trust, Cloud Cuckoo Land, Goon Squad tier),
+   richly researched historical fiction (Shogun tier), grounded original fantasy
+   (Piranesi, Circe tier). NOT: epic quest fantasy, cozy mysteries, domestic realism,
+   beach reads, self-help.
+
+4. Economics
+   Big-picture ideas about how the world works — NOT market news or Fed rate updates.
+   Think: Freakonomics-style insights, long-run trends, counterintuitive findings,
+   "why does this work this way?" essays. Marginal Revolution / Works in Progress /
+   Asterisk Magazine quality. Must be accessible and genuinely interesting, not
+   academic for its own sake.
+
+5. Visuals
+   Something genuinely stunning to look at. The reader loves: space photography
+   (Hubble, JWST, astrophotography), nature and wildlife photography, travel and
+   landscape photography, photojournalism. Look for: a newly released NASA/ESA image,
+   a photo series that's getting attention, a breathtaking travel shot, a nature
+   documentary still or clip, a geographic or aerial image. Quality bar is high —
+   should feel like a genuine "wow." Not AI-generated art, not graphic design,
+   not illustrations. Real photography of real things.
+
+6. Trends & Ideas
+   Things catching the zeitgeist RIGHT NOW with real substance behind them — not dumb
+   viral moments. Think: ai-2027.com (a serious speculative piece that blew up), a new
+   framework for thinking about something, an essay or project that's suddenly everywhere
+   in smart circles, a genuinely interesting new podcast worth subscribing to, a cultural
+   shift that's just becoming visible. The bar: "smart people are talking about this for
+   good reason." Not: "this got a million views." Avoid pure political takes, outrage
+   bait, and anything that will feel irrelevant in two weeks.
+
+OVERALL TONE: Assume the reader is smart and busy. Every pick should clear the bar of
+"I'm genuinely glad I clicked this." No padding, no filler. One excellent pick per
+category beats five mediocre ones.
+
+Hard avoids across all categories: celebrity gossip, sports scores, crypto speculation,
+political hot takes, SEO listicles, press-release rewrites, anything that exists purely
+to generate clicks.
 """
 
 CATEGORIES = [
-    "Law & Policy",
-    "AI & Tech",
+    "Movies & Shows",
+    "Games",
+    "Books",
     "Economics",
-    "Games & Design",
-    "History & Science",
-    "Tools & Dev",
+    "Visuals",
+    "Trends & Ideas",
 ]
 
-NUM_LINKS  = 8
+NUM_LINKS  = 12
 OUTPUT_FILE = Path(__file__).parent / "index.html"
 
 
@@ -134,21 +182,21 @@ def _parse_links(text: str) -> list[dict]:
 
 # Light-bg / text-color pairs for each category tag
 CATEGORY_STYLES: dict[str, tuple[str, str]] = {
-    "Law & Policy":      ("#E6F1FB", "#0C447C"),
-    "AI & Tech":         ("#EEEDFE", "#3C3489"),
-    "Economics":         ("#E1F5EE", "#085041"),
-    "Games & Design":    ("#FAEEDA", "#633806"),
-    "History & Science": ("#EAF3DE", "#27500A"),
-    "Tools & Dev":       ("#F1EFE8", "#444441"),
+    "Movies & Shows":  ("#EEEDFE", "#3C3489"),
+    "Games":           ("#FAECE7", "#993C1D"),
+    "Books":           ("#E1F5EE", "#085041"),
+    "Economics":       ("#FAEEDA", "#633806"),
+    "Visuals":         ("#E6F1FB", "#0C447C"),
+    "Trends & Ideas":  ("#FBEAF0", "#72243E"),
 }
 
 DARK_CATEGORY_STYLES: dict[str, tuple[str, str]] = {
-    "Law & Policy":      ("#0C447C", "#B5D4F4"),
-    "AI & Tech":         ("#3C3489", "#CECBF6"),
-    "Economics":         ("#085041", "#9FE1CB"),
-    "Games & Design":    ("#633806", "#FAC775"),
-    "History & Science": ("#27500A", "#C0DD97"),
-    "Tools & Dev":       ("#444441", "#D3D1C7"),
+    "Movies & Shows":  ("#3C3489", "#CECBF6"),
+    "Games":           ("#712B13", "#F5C4B3"),
+    "Books":           ("#085041", "#9FE1CB"),
+    "Economics":       ("#633806", "#FAC775"),
+    "Visuals":         ("#0C447C", "#B5D4F4"),
+    "Trends & Ideas":  ("#72243E", "#F4C0D1"),
 }
 
 
@@ -181,7 +229,7 @@ def render_html(links: list[dict]) -> str:
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Reads</title>
+<title>Karim's Daily Reads</title>
 <style>
   :root {{
     --bg:      #faf9f7;
@@ -295,7 +343,7 @@ def render_html(links: list[dict]) -> str:
 </head>
 <body>
 <header>
-  <h1>Daily Reads</h1>
+  <h1>Karim's Daily Reads</h1>
   <span class="meta">Updated {timestamp} · Curated by Claude</span>
 </header>
 <main>
