@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Reads</title>
+<style>
+  :root {
+    --bg:      #faf9f7;
+    --surface: #ffffff;
+    --text:    #1a1a18;
+    --muted:   #6b6b67;
+    --border:  rgba(0,0,0,0.08);
+    --hover:   rgba(0,0,0,0.14);
+    --radius:  12px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:      #111113;
+      --surface: #1c1c1e;
+      --text:    #e4e2da;
+      --muted:   #8c8a82;
+      --border:  rgba(255,255,255,0.08);
+      --hover:   rgba(255,255,255,0.15);
+    }
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  header {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 52px 24px 28px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  header h1 {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+  }
+  header .meta {
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px 24px 48px;
+    display: grid;
+    gap: 10px;
+  }
+  .card {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 22px 20px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.12s;
+  }
+  .card:hover { border-color: var(--hover); }
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 9px;
+  }
+  .tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: var(--tag-bg);
+    color: var(--tag-tc);
+  }
+  @media (prefers-color-scheme: dark) {
+    .tag {
+      background: var(--tag-dbg);
+      color: var(--tag-dtc);
+    }
+  }
+  .source {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  h2 {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.45;
+    margin-bottom: 6px;
+  }
+  p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  footer {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px 52px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Daily Reads</h1>
+  <span class="meta">Updated March 24, 2026 at 00:53 UTC · Curated by Claude</span>
+</header>
+<main>
+
+    <a href="https://patentdocs.org/2026/03/22/why-the-alice-test-is-stupid-part-v-the-goalposts-keep-moving/" class="card" target="_blank" rel="noopener noreferrer">
+      <div class="card-meta">
+        <span class="tag"
+          style="--tag-bg:#E6F1FB;--tag-tc:#0C447C;--tag-dbg:#0C447C;--tag-dtc:#B5D4F4"
+        >Law & Policy</span>
+        <span class="source">Patent Docs</span>
+      </div>
+      <h2>Why the Alice Test is Stupid, Part V: The Federal Circuit's Moving Goalposts on Patent Eligibility</h2>
+      <p>A detailed critique examining how Federal Circuit precedent on § 101 has become incoherent over twelve years since Alice, requiring practitioners to track doctrine weekly. Essential reading for anyone litigating software patents who wants a frank practitioner's-eye analysis of the framework's practical failures.</p>
+    </a>
+
+    <a href="https://www.pkhip.com/insights/uspto-issues-new-guidance-on-ptab-discretionary-institution-focus-on-us-manufacturing-and-small-businesses" class="card" target="_blank" rel="noopener noreferrer">
+      <div class="card-meta">
+        <span class="tag"
+          style="--tag-bg:#E6F1FB;--tag-tc:#0C447C;--tag-dbg:#0C447C;--tag-dtc:#B5D4F4"
+        >Law & Policy</span>
+        <span class="source">Perilla Knox & Hildebrandt LLP</span>
+      </div>
+      <h2>USPTO Issues New PTAB Guidance: Discretionary Institution Now Weighs U.S. Manufacturing and Small Business Status</h2>
+      <p>Director Squires' March 11, 2026 memorandum introduces new discretionary factors for IPR/PGR institution, including whether accused products are manufactured domestically and whether petitioners are small businesses. A significant shift in PTAB strategy that patent litigators need to factor into discretionary briefing.</p>
+    </a>
+
+    <a href="https://www.lesswrong.com/posts/Pc789vx2oHgEXYZZH/new-rfp-on-interpretability-from-schmidt-sciences-1" class="card" target="_blank" rel="noopener noreferrer">
+      <div class="card-meta">
+        <span class="tag"
+          style="--tag-bg:#EEEDFE;--tag-tc:#3C3489;--tag-dbg:#3C3489;--tag-dtc:#CECBF6"
+        >AI & Tech</span>
+        <span class="source">LessWrong / AI Alignment Forum</span>
+      </div>
+      <h2>Schmidt Sciences RFP: New Pilot Program Seeks Interpretability Methods for Detecting AI Deception</h2>
+      <p>Schmidt Sciences announces funding for interpretability research specifically targeting deceptive AI behaviors, seeking tools that outperform black-box baselines by leveraging model internals. Defines concrete evaluation criteria and signals potential for larger investment if pilot succeeds—a serious funding opportunity for applied alignment work.</p>
+    </a>
+
+    <a href="https://www.technologyreview.com/2026/01/12/1130003/mechanistic-interpretability-ai-research-models-2026-breakthrough-technologies/" class="card" target="_blank" rel="noopener noreferrer">
+      <div class="card-meta">
+        <span class="tag"
+          style="--tag-bg:#EEEDFE;--tag-tc:#3C3489;--tag-dbg:#3C3489;--tag-dtc:#CECBF6"
+        >AI & Tech</span>
+        <span class="source">MIT Technology Review</span>
+      </div>
+      <h2>Mechanistic Interpretability Named 2026 Breakthrough Technology—But Field Debates Whether It Can Actually Detect Deception</h2>
+      <p>MIT Tech Review examines how Anthropic's circuit tracing tools revealed Claude's multi-step reasoning while OpenAI and DeepMind pursue similar approaches to explain unexpected model behaviors. Contextualizes the tension between Anthropic's ambitious 2027 detection timeline and DeepMind's strategic pivot away from SAEs.</p>
+    </a>
+
+    <a href="https://www.astralcodexten.com/p/last-rights" class="card" target="_blank" rel="noopener noreferrer">
+      <div class="card-meta">
+        <span class="tag"
+          style="--tag-bg:#E1F5EE;--tag-tc:#085041;--tag-dbg:#085041;--tag-dtc:#9FE1CB"
+        >Economics</span>
+        <span class="source">Astral Codex Ten</span>
+      </div>
+      <h2>Last Rights: A Proposal for a 6,000-Member 'Giant Congress' to Fix American Representation</h2>
+      <p>A guest post exploring a constitutional amendment to massively expand Congress, arguing that smaller districts would reduce gerrymandering's bite and restore representative legitimacy. Vintage ACX political-reform speculation with serious historical and quantitative grounding.</p>
+    </a>
+
+    <a href="https://marginalrevolution.com/marginalrevolution/2026/03/chaos-and-misallocation-under-price-controls.html" class="card" target="_blank" rel="noopener noreferrer">
+      <div class="card-meta">
+        <span class="tag"
+          style="--tag-bg:#E1F5EE;--tag-tc:#085041;--tag-dbg:#085041;--tag-dtc:#9FE1CB"
+        >Economics</span>
+        <span class="source">Marginal Revolution</span>
+      </div>
+      <h2>Chaos and Misallocation under Price Controls: A New 'Chaos Theorem' for Why Shortages Strike Random Markets</h2>
+      <p>Alex Tabarrok presents his new paper proving that binding price ceilings eliminate arbitrage incentives, causing allocation to tip to unpredictable corners where some markets are fully served while others starve. Elegant microeconomic theory with policy relevance beyond the standard Harberger-triangle critique.</p>
+    </a>
+
+    <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2026.1768461/full" class="card" target="_blank" rel="noopener noreferrer">
+      <div class="card-meta">
+        <span class="tag"
+          style="--tag-bg:#EAF3DE;--tag-tc:#27500A;--tag-dbg:#27500A;--tag-dtc:#C0DD97"
+        >History & Science</span>
+        <span class="source">Frontiers in Psychology</span>
+      </div>
+      <h2>Psychological Safety in Interdisciplinary Teams: Specific Leadership Behaviors That Build Trust Across Disciplines</h2>
+      <p>New empirical research identifies five thematic areas of leader behaviors that cultivate psychological safety in diverse research teams, offering actionable insights for anyone managing expert-heavy groups. Grounded in Edmondson's framework but extends it with concrete practices for interdisciplinary contexts.</p>
+    </a>
+
+    <a href="https://dasroot.net/posts/2026/02/top-python-libraries-ai-workflow-automation-2026/" class="card" target="_blank" rel="noopener noreferrer">
+      <div class="card-meta">
+        <span class="tag"
+          style="--tag-bg:#F1EFE8;--tag-tc:#444441;--tag-dbg:#444441;--tag-dtc:#D3D1C7"
+        >Tools & Dev</span>
+        <span class="source">Dasroot Technical Blog</span>
+      </div>
+      <h2>Top Python Libraries for AI Workflow Automation in 2026: n8n, Prefect, LangChain Compared</h2>
+      <p>A practitioner-focused comparison of n8n, Prefect 2.6, and LangChain 0.2 for building AI-integrated workflows, with real deployment case studies including a media company's 300% content-output increase. Solid technical depth for anyone building RAG pipelines or multi-agent systems in Python.</p>
+    </a>
+</main>
+<footer>Refreshed twice daily. Links open in a new tab.</footer>
+</body>
+</html>
