@@ -303,7 +303,7 @@ def render_html(links: list[dict]) -> str:
     margin-bottom: 9px;
   }}
   .tag {{
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 500;
     letter-spacing: 0.2px;
     padding: 3px 8px;
@@ -318,17 +318,17 @@ def render_html(links: list[dict]) -> str:
     }}
   }}
   .source {{
-    font-size: 12px;
+    font-size: 13px;
     color: var(--muted);
   }}
   h2 {{
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 500;
     line-height: 1.45;
     margin-bottom: 6px;
   }}
   p {{
-    font-size: 13px;
+    font-size: 15px;
     color: var(--muted);
     line-height: 1.65;
   }}
