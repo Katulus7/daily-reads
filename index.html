@@ -34,23 +34,25 @@
   header {
     max-width: 720px;
     margin: 0 auto;
-    padding: 52px 24px 28px;
+    padding: 36px 24px 24px;
     border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 24px;
-    flex-wrap: wrap;
   }
   header h1 {
     font-size: 20px;
     font-weight: 500;
     letter-spacing: -0.3px;
+    margin-bottom: 10px;
+  }
+  .header-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
   }
   header .meta {
     font-size: 12px;
     color: var(--muted);
-    white-space: nowrap;
+    flex: 1;
   }
   main {
     max-width: 720px;
@@ -123,12 +125,12 @@
 <body>
 <header>
   <h1>Karim's Daily Reads</h1>
-  <div style="display:flex;align-items:center;gap:16px">
-    <div style="display:flex;align-items:center;gap:4px">
-      <button onclick="adjustFont(-1)" style="background:none;border:1px solid var(--border);border-radius:6px;color:var(--muted);cursor:pointer;font-size:13px;padding:3px 9px;line-height:1">A−</button>
-      <button onclick="adjustFont(1)"  style="background:none;border:1px solid var(--border);border-radius:6px;color:var(--muted);cursor:pointer;font-size:15px;padding:3px 9px;line-height:1">A+</button>
+  <div class="header-controls">
+    <div style="display:flex;align-items:center;gap:6px">
+      <button onclick="adjustFont(-1)" style="background:none;border:1px solid var(--border);border-radius:8px;color:var(--muted);cursor:pointer;font-size:15px;padding:6px 14px;line-height:1;-webkit-tap-highlight-color:transparent">A−</button>
+      <button onclick="adjustFont(1)"  style="background:none;border:1px solid var(--border);border-radius:8px;color:var(--muted);cursor:pointer;font-size:18px;padding:6px 14px;line-height:1;-webkit-tap-highlight-color:transparent">A+</button>
     </div>
-    <span class="meta">Updated March 25, 2026 at 00:33 UTC · Curated by Claude</span>
+    <span class="meta">Updated March 25, 2026 at 11:46 UTC · Curated by Claude</span>
   </div>
 </header>
 <main>
@@ -140,11 +142,25 @@
         >Movies & Shows</span>
         <span class="source">Rotten Tomatoes</span>
       </div>
-      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
-        <h2 style="flex:1"><a href="https://editorial.rottentomatoes.com/article/project-hail-mary-first-reviews/" target="_blank" rel="noopener noreferrer">Project Hail Mary Is Ryan Gosling's Highest-Rated Film, and Critics Say It's a New Sci-Fi Classic</a></h2>
-        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20Project%20Hail%20Mary%20Is%20Ryan%20Gosling%27s%20Highest-Rated%20Film%2C%20and%20Critics%20Say%20It%27s%20a%20New%20Sci-Fi%20Classic&body=Project%20Hail%20Mary%20Is%20Ryan%20Gosling%27s%20Highest-Rated%20Film%2C%20and%20Critics%20Say%20It%27s%20a%20New%20Sci-Fi%20Classic%0Ahttps%3A//editorial.rottentomatoes.com/article/project-hail-mary-first-reviews/%0A%0APhil%20Lord%20and%20Christopher%20Miller%27s%20adaptation%20of%20Andy%20Weir%27s%20novel%20scores%2095%25%20from%20critics%20and%2096%25%20from%20audiences%20%E2%80%94%20both%20camps%20agree%20it%27s%20a%20rare%20crowd-pleaser%20with%20genuine%20emotional%20heft.%20Gosling%27s%20chemistry%20with%20his%20alien%20co-star%20Rocky%20is%20already%20being%20called%20the%20buddy%20duo%20of%20the%20decade." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:3px 9px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <h2 style="flex:1;min-width:0"><a href="https://www.rottentomatoes.com/m/project_hail_mary" target="_blank" rel="noopener noreferrer" style="display:inline">Project Hail Mary: Ryan Gosling's Sci-Fi Crowd-Pleaser Just Landed</a></h2>
+        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20Project%20Hail%20Mary%3A%20Ryan%20Gosling%27s%20Sci-Fi%20Crowd-Pleaser%20Just%20Landed&body=Project%20Hail%20Mary%3A%20Ryan%20Gosling%27s%20Sci-Fi%20Crowd-Pleaser%20Just%20Landed%0Ahttps%3A//www.rottentomatoes.com/m/project_hail_mary%0A%0APhil%20Lord%20and%20Christopher%20Miller%20adapt%20Andy%20Weir%27s%20novel%20into%20a%2095%25%20critics%20/%2096%25%20audience%20hit%20about%20an%20amnesiac%20astronaut%20and%20his%20unlikely%20alien%20ally%20racing%20to%20save%20Earth.%20Gosling%20at%20his%20most%20winning%2C%20with%20genuine%20heart%20beneath%20the%20science." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
       </div>
-      <p>Phil Lord and Christopher Miller's adaptation of Andy Weir's novel scores 95% from critics and 96% from audiences — both camps agree it's a rare crowd-pleaser with genuine emotional heft. Gosling's chemistry with his alien co-star Rocky is already being called the buddy duo of the decade.</p>
+      <p>Phil Lord and Christopher Miller adapt Andy Weir's novel into a 95% critics / 96% audience hit about an amnesiac astronaut and his unlikely alien ally racing to save Earth. Gosling at his most winning, with genuine heart beneath the science.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-meta">
+        <span class="tag"
+          style="--tag-bg:#EEEDFE;--tag-tc:#3C3489;--tag-dbg:#3C3489;--tag-dtc:#CECBF6"
+        >Movies & Shows</span>
+        <span class="source">NPR</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <h2 style="flex:1;min-width:0"><a href="https://www.npr.org/2026/03/18/nx-s1-5750822/peaky-blinders-the-immortal-man-review" target="_blank" rel="noopener noreferrer" style="display:inline">Peaky Blinders: The Immortal Man — Cillian Murphy's Cinematic Farewell</a></h2>
+        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20Peaky%20Blinders%3A%20The%20Immortal%20Man%20%E2%80%94%20Cillian%20Murphy%27s%20Cinematic%20Farewell&body=Peaky%20Blinders%3A%20The%20Immortal%20Man%20%E2%80%94%20Cillian%20Murphy%27s%20Cinematic%20Farewell%0Ahttps%3A//www.npr.org/2026/03/18/nx-s1-5750822/peaky-blinders-the-immortal-man-review%0A%0ASteven%20Knight%27s%20WWII-set%20film%20finale%20brings%20Tommy%20Shelby%20back%20for%20one%20last%20job%20with%20Barry%20Keoghan%20as%20his%20estranged%20son.%20A%20satisfying%20gangland%20coda%20that%20delivers%20the%20grit%20fans%20love%20without%20requiring%20six%20seasons%20of%20backstory." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
+      </div>
+      <p>Steven Knight's WWII-set film finale brings Tommy Shelby back for one last job with Barry Keoghan as his estranged son. A satisfying gangland coda that delivers the grit fans love without requiring six seasons of backstory.</p>
     </div>
 
     <div class="card">
@@ -154,11 +170,11 @@
         >Games</span>
         <span class="source">PC Gamer</span>
       </div>
-      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
-        <h2 style="flex:1"><a href="https://www.pcgamer.com/games/rpg/esoteric-ebb-review/" target="_blank" rel="noopener noreferrer">Esoteric Ebb Review: The First Worthy Successor to Disco Elysium Has Arrived</a></h2>
-        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20Esoteric%20Ebb%20Review%3A%20The%20First%20Worthy%20Successor%20to%20Disco%20Elysium%20Has%20Arrived&body=Esoteric%20Ebb%20Review%3A%20The%20First%20Worthy%20Successor%20to%20Disco%20Elysium%20Has%20Arrived%0Ahttps%3A//www.pcgamer.com/games/rpg/esoteric-ebb-review/%0A%0AA%20solo%20dev%20CRPG%20that%20wraps%20Disco%20Elysium%27s%20identity-crisis%20narrative%20in%20a%20D%26D%20skin%20%E2%80%94%20and%20somehow%20manages%20to%20be%20even%20funnier.%20PC%20Gamer%20calls%20it%20the%20best%20RPG%20of%202026%20and%20the%20finest%20encapsulation%20of%20tabletop%20magic%20they%27ve%20seen%20in%20a%20game." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:3px 9px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <h2 style="flex:1;min-width:0"><a href="https://www.pcgamer.com/games/rpg/esoteric-ebb-review/" target="_blank" rel="noopener noreferrer" style="display:inline">Esoteric Ebb: PC Gamer Calls It 2026's Best RPG and the First True Disco Elysium Successor</a></h2>
+        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20Esoteric%20Ebb%3A%20PC%20Gamer%20Calls%20It%202026%27s%20Best%20RPG%20and%20the%20First%20True%20Disco%20Elysium%20Successor&body=Esoteric%20Ebb%3A%20PC%20Gamer%20Calls%20It%202026%27s%20Best%20RPG%20and%20the%20First%20True%20Disco%20Elysium%20Successor%0Ahttps%3A//www.pcgamer.com/games/rpg/esoteric-ebb-review/%0A%0AA%20solo-dev%20CRPG%20that%20blends%20D%26D%20mechanics%20with%20Disco%20Elysium%27s%20dialogue-driven%20storytelling%2C%20set%20in%20a%20fantasy%20city%20five%20days%20from%20its%20first%20election.%2096%25%20positive%20on%20Steam%3B%20the%20funniest%2C%20most%20reactive%20RPG%20since%20Disco%20itself." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
       </div>
-      <p>A solo dev CRPG that wraps Disco Elysium's identity-crisis narrative in a D&D skin — and somehow manages to be even funnier. PC Gamer calls it the best RPG of 2026 and the finest encapsulation of tabletop magic they've seen in a game.</p>
+      <p>A solo-dev CRPG that blends D&D mechanics with Disco Elysium's dialogue-driven storytelling, set in a fantasy city five days from its first election. 96% positive on Steam; the funniest, most reactive RPG since Disco itself.</p>
     </div>
 
     <div class="card">
@@ -168,11 +184,11 @@
         >Games</span>
         <span class="source">PCGamesN</span>
       </div>
-      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
-        <h2 style="flex:1"><a href="https://www.pcgamesn.com/slay-the-spire-2/review" target="_blank" rel="noopener noreferrer">Slay the Spire 2 Review: Refining a Modern Classic</a></h2>
-        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20Slay%20the%20Spire%202%20Review%3A%20Refining%20a%20Modern%20Classic&body=Slay%20the%20Spire%202%20Review%3A%20Refining%20a%20Modern%20Classic%0Ahttps%3A//www.pcgamesn.com/slay-the-spire-2/review%0A%0AMega%20Crit%27s%20sequel%20to%20the%20genre-defining%20deckbuilder%20adds%20two%20new%20characters%2C%20expanded%20lore%20via%20the%20Epochs%20progression%20system%2C%20and%204-player%20co-op%20while%20keeping%20the%20core%20loop%20razor-sharp.%20Already%20has%203%20million%20copies%20sold%20in%20its%20first%20week%20despite%20being%20in%20Early%20Access." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:3px 9px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <h2 style="flex:1;min-width:0"><a href="https://www.pcgamesn.com/slay-the-spire-2/review" target="_blank" rel="noopener noreferrer" style="display:inline">Slay the Spire 2 Early Access Review: Refining a Modern Classic</a></h2>
+        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20Slay%20the%20Spire%202%20Early%20Access%20Review%3A%20Refining%20a%20Modern%20Classic&body=Slay%20the%20Spire%202%20Early%20Access%20Review%3A%20Refining%20a%20Modern%20Classic%0Ahttps%3A//www.pcgamesn.com/slay-the-spire-2/review%0A%0AMega%20Crit%27s%20sequel%20adds%20two%20new%20characters%20%28Necrobinder%20and%20Regent%29%2C%204-player%20co-op%2C%20and%20actual%20narrative%20context%20while%20keeping%20the%20core%20loop%20pristine.%20Already%20feels%20more%20polished%20than%20most%20finished%20games." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
       </div>
-      <p>Mega Crit's sequel to the genre-defining deckbuilder adds two new characters, expanded lore via the Epochs progression system, and 4-player co-op while keeping the core loop razor-sharp. Already has 3 million copies sold in its first week despite being in Early Access.</p>
+      <p>Mega Crit's sequel adds two new characters (Necrobinder and Regent), 4-player co-op, and actual narrative context while keeping the core loop pristine. Already feels more polished than most finished games.</p>
     </div>
 
     <div class="card">
@@ -180,13 +196,13 @@
         <span class="tag"
           style="--tag-bg:#E1F5EE;--tag-tc:#085041;--tag-dbg:#085041;--tag-dtc:#9FE1CB"
         >Books</span>
-        <span class="source">Penguin Random House</span>
+        <span class="source">BookPage</span>
       </div>
-      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
-        <h2 style="flex:1"><a href="https://www.penguinrandomhouse.com/books/808114/light-and-thread-by-han-kang/" target="_blank" rel="noopener noreferrer">Light and Thread by Han Kang: The Nobel Laureate's First Nonfiction Book in English</a></h2>
-        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20Light%20and%20Thread%20by%20Han%20Kang%3A%20The%20Nobel%20Laureate%27s%20First%20Nonfiction%20Book%20in%20English&body=Light%20and%20Thread%20by%20Han%20Kang%3A%20The%20Nobel%20Laureate%27s%20First%20Nonfiction%20Book%20in%20English%0Ahttps%3A//www.penguinrandomhouse.com/books/808114/light-and-thread-by-han-kang/%0A%0AHan%20Kang%27s%20first%20nonfiction%20collection%20weaves%20essays%2C%20poems%2C%20photographs%2C%20and%20her%20Nobel%20Lecture%20into%20a%20meditation%20on%20language%20as%20a%20%27gold%20thread%27%20connecting%20hearts.%20Centered%20on%20her%20tiny%2C%20mirror-lit%20courtyard%20garden%2C%20it%27s%20a%20luminous%20window%20into%20the%20mind%20behind%20The%20Vegetarian%20and%20Human%20Acts." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:3px 9px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <h2 style="flex:1;min-width:0"><a href="https://www.bookpage.com/reviews/river-of-bones-and-other-stories-rebecca-roanhorse-book-review/" target="_blank" rel="noopener noreferrer" style="display:inline">River of Bones and Other Stories: Rebecca Roanhorse's First Collection</a></h2>
+        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20River%20of%20Bones%20and%20Other%20Stories%3A%20Rebecca%20Roanhorse%27s%20First%20Collection&body=River%20of%20Bones%20and%20Other%20Stories%3A%20Rebecca%20Roanhorse%27s%20First%20Collection%0Ahttps%3A//www.bookpage.com/reviews/river-of-bones-and-other-stories-rebecca-roanhorse-book-review/%0A%0AHugo/Nebula%20winner%20Roanhorse%20assembles%20her%20best%20short%20fiction%20plus%20a%20new%20Sixth%20World%20novella.%20Spans%20identity-crisis%20sci-fi%20to%20Indigenous%20horror%20%E2%80%94%20a%20perfect%20entry%20point%20if%20you%27ve%20loved%20her%20novels%20or%20never%20read%20her." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
       </div>
-      <p>Han Kang's first nonfiction collection weaves essays, poems, photographs, and her Nobel Lecture into a meditation on language as a 'gold thread' connecting hearts. Centered on her tiny, mirror-lit courtyard garden, it's a luminous window into the mind behind The Vegetarian and Human Acts.</p>
+      <p>Hugo/Nebula winner Roanhorse assembles her best short fiction plus a new Sixth World novella. Spans identity-crisis sci-fi to Indigenous horror — a perfect entry point if you've loved her novels or never read her.</p>
     </div>
 
     <div class="card">
@@ -194,27 +210,13 @@
         <span class="tag"
           style="--tag-bg:#E1F5EE;--tag-tc:#085041;--tag-dbg:#085041;--tag-dtc:#9FE1CB"
         >Books</span>
-        <span class="source">Locus Magazine</span>
+        <span class="source">Winter Is Coming</span>
       </div>
-      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
-        <h2 style="flex:1"><a href="https://locusmag.com/2026/03/new-book-releases-march-3-2026/" target="_blank" rel="noopener noreferrer">River of Bones and Other Stories by Rebecca Roanhorse Collects a Decade of Award-Winning Speculative Fiction</a></h2>
-        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20River%20of%20Bones%20and%20Other%20Stories%20by%20Rebecca%20Roanhorse%20Collects%20a%20Decade%20of%20Award-Winning%20Speculative%20Fiction&body=River%20of%20Bones%20and%20Other%20Stories%20by%20Rebecca%20Roanhorse%20Collects%20a%20Decade%20of%20Award-Winning%20Speculative%20Fiction%0Ahttps%3A//locusmag.com/2026/03/new-book-releases-march-3-2026/%0A%0AThis%20career-spanning%20collection%20from%20the%20Hugo/Nebula%20winner%20includes%20%27Welcome%20to%20Your%20Authentic%20Indian%20Experience%E2%84%A2%27%20alongside%20new%20Sixth%20World%20stories.%20For%20readers%20who%20want%20literary%20sci-fi%20with%20sharp%20cultural%20commentary%20and%20genuine%20genre%20range." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:3px 9px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <h2 style="flex:1;min-width:0"><a href="https://winteriscoming.net/16-new-fantasy-science-fiction-books-march-2026" target="_blank" rel="noopener noreferrer" style="display:inline">Trace Elements: Jo Walton and Ada Palmer on the Project of Science Fiction</a></h2>
+        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20Trace%20Elements%3A%20Jo%20Walton%20and%20Ada%20Palmer%20on%20the%20Project%20of%20Science%20Fiction&body=Trace%20Elements%3A%20Jo%20Walton%20and%20Ada%20Palmer%20on%20the%20Project%20of%20Science%20Fiction%0Ahttps%3A//winteriscoming.net/16-new-fantasy-science-fiction-books-march-2026%0A%0ATwo%20of%20genre%20fiction%27s%20sharpest%20minds%20in%20conversation%20about%20how%20SF%20and%20fantasy%20actually%20work.%20Not%20a%20novel%2C%20but%20essential%20reading%20for%20anyone%20who%20cares%20about%20the%20craft%20behind%20their%20favorite%20speculative%20stories." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
       </div>
-      <p>This career-spanning collection from the Hugo/Nebula winner includes 'Welcome to Your Authentic Indian Experience™' alongside new Sixth World stories. For readers who want literary sci-fi with sharp cultural commentary and genuine genre range.</p>
-    </div>
-
-    <div class="card">
-      <div class="card-meta">
-        <span class="tag"
-          style="--tag-bg:#E6F1FB;--tag-tc:#0C447C;--tag-dbg:#0C447C;--tag-dtc:#B5D4F4"
-        >Visuals</span>
-        <span class="source">NASA</span>
-      </div>
-      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
-        <h2 style="flex:1"><a href="https://science.nasa.gov/missions/webb/nasas-webb-examines-cranium-nebula/" target="_blank" rel="noopener noreferrer">NASA's Webb Captures the Eerie 'Exposed Cranium' Nebula — A Dying Star That Looks Like a Brain</a></h2>
-        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20NASA%27s%20Webb%20Captures%20the%20Eerie%20%27Exposed%20Cranium%27%20Nebula%20%E2%80%94%20A%20Dying%20Star%20That%20Looks%20Like%20a%20Brain&body=NASA%27s%20Webb%20Captures%20the%20Eerie%20%27Exposed%20Cranium%27%20Nebula%20%E2%80%94%20A%20Dying%20Star%20That%20Looks%20Like%20a%20Brain%0Ahttps%3A//science.nasa.gov/missions/webb/nasas-webb-examines-cranium-nebula/%0A%0AJWST%20reveals%20stunning%20new%20detail%20in%20nebula%20PMR%201%2C%20a%20cloud%20of%20gas%20and%20dust%20around%20a%20dying%20star%20that%20uncannily%20resembles%20a%20brain%20in%20a%20transparent%20skull.%20The%20dark%20lane%20splitting%20its%20%27hemispheres%27%20may%20be%20twin%20jets%20shaping%20its%20structure%20%E2%80%94%20and%20we%20still%20don%27t%20know%20if%20it%20ends%20in%20supernova%20or%20white%20dwarf." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:3px 9px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
-      </div>
-      <p>JWST reveals stunning new detail in nebula PMR 1, a cloud of gas and dust around a dying star that uncannily resembles a brain in a transparent skull. The dark lane splitting its 'hemispheres' may be twin jets shaping its structure — and we still don't know if it ends in supernova or white dwarf.</p>
+      <p>Two of genre fiction's sharpest minds in conversation about how SF and fantasy actually work. Not a novel, but essential reading for anyone who cares about the craft behind their favorite speculative stories.</p>
     </div>
 
     <div class="card">
@@ -224,39 +226,11 @@
         >Economics</span>
         <span class="source">Marginal Revolution</span>
       </div>
-      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
-        <h2 style="flex:1"><a href="https://marginalrevolution.com/marginalrevolution/2026/03/some-simple-economics-of-ai.html" target="_blank" rel="noopener noreferrer">Some Simple Economics of AI: Where Does Durable Advantage Reconcentrate?</a></h2>
-        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20Some%20Simple%20Economics%20of%20AI%3A%20Where%20Does%20Durable%20Advantage%20Reconcentrate%3F&body=Some%20Simple%20Economics%20of%20AI%3A%20Where%20Does%20Durable%20Advantage%20Reconcentrate%3F%0Ahttps%3A//marginalrevolution.com/marginalrevolution/2026/03/some-simple-economics-of-ai.html%0A%0ATyler%20Cowen%27s%20compact%20thesis%3A%20AI%20lowers%20the%20cost%20of%20building%20businesses%20but%20raises%20the%20bar%20for%20sustaining%20advantage.%20More%20volatility%2C%20less%20structural%20concentration%20%E2%80%94%20and%20durable%20moats%20shift%20to%20things%20that%20resist%20compression%3A%20physical%20infrastructure%2C%20energy%20constraints%2C%20the%20assets%20that%20still%20require%20time." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:3px 9px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <h2 style="flex:1;min-width:0"><a href="https://marginalrevolution.com/marginalrevolution/2026/03/some-simple-economics-of-ai.html" target="_blank" rel="noopener noreferrer" style="display:inline">Some Simple Economics of AI: Tyler Cowen on Why Moats Are Eroding</a></h2>
+        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20Some%20Simple%20Economics%20of%20AI%3A%20Tyler%20Cowen%20on%20Why%20Moats%20Are%20Eroding&body=Some%20Simple%20Economics%20of%20AI%3A%20Tyler%20Cowen%20on%20Why%20Moats%20Are%20Eroding%0Ahttps%3A//marginalrevolution.com/marginalrevolution/2026/03/some-simple-economics-of-ai.html%0A%0AAI%20lowers%20the%20cost%20of%20building%20businesses%20but%20raises%20the%20bar%20for%20sustaining%20advantage%20%E2%80%94%20meaning%20more%20volatility%2C%20less%20concentration%2C%20and%20durable%20value%20shifting%20to%20physical%20infrastructure%20and%20regulatory%20barriers.%20A%20clean%20framework%20in%20200%20words." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
       </div>
-      <p>Tyler Cowen's compact thesis: AI lowers the cost of building businesses but raises the bar for sustaining advantage. More volatility, less structural concentration — and durable moats shift to things that resist compression: physical infrastructure, energy constraints, the assets that still require time.</p>
-    </div>
-
-    <div class="card">
-      <div class="card-meta">
-        <span class="tag"
-          style="--tag-bg:#FBEAF0;--tag-tc:#72243E;--tag-dbg:#72243E;--tag-dtc:#F4C0D1"
-        >Trends & Ideas</span>
-        <span class="source">Derek Thompson (Substack)</span>
-      </div>
-      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
-        <h2 style="flex:1"><a href="https://www.derekthompson.org/p/the-26-most-important-ideas-for-2026" target="_blank" rel="noopener noreferrer">The 26 Most Important Ideas For 2026</a></h2>
-        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20The%2026%20Most%20Important%20Ideas%20For%202026&body=The%2026%20Most%20Important%20Ideas%20For%202026%0Ahttps%3A//www.derekthompson.org/p/the-26-most-important-ideas-for-2026%0A%0AThe%20Atlantic%20writer%27s%20annual%20forecast%20covers%20the%20%27televisionification%27%20of%20all%20media%2C%20the%20gambling%20epidemic%20among%20young%20men%2C%20and%20why%20YouTube%20now%20accounts%20for%2050%25%20more%20viewing%20time%20than%20Netflix.%20Dense%20with%20charts%20and%20counterintuitive%20observations%20about%20where%20culture%20is%20actually%20heading." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:3px 9px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
-      </div>
-      <p>The Atlantic writer's annual forecast covers the 'televisionification' of all media, the gambling epidemic among young men, and why YouTube now accounts for 50% more viewing time than Netflix. Dense with charts and counterintuitive observations about where culture is actually heading.</p>
-    </div>
-
-    <div class="card">
-      <div class="card-meta">
-        <span class="tag"
-          style="--tag-bg:#FBEAF0;--tag-tc:#72243E;--tag-dbg:#72243E;--tag-dtc:#F4C0D1"
-        >Trends & Ideas</span>
-        <span class="source">CNBC</span>
-      </div>
-      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
-        <h2 style="flex:1"><a href="https://www.cnbc.com/2026/02/13/investor-matt-shumer-says-viral-essay-wasnt-meant-to-scare-people.html" target="_blank" rel="noopener noreferrer">Matt Shumer's Viral AI Essay Hit 82 Million Views — Here's What It Actually Says</a></h2>
-        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20Matt%20Shumer%27s%20Viral%20AI%20Essay%20Hit%2082%20Million%20Views%20%E2%80%94%20Here%27s%20What%20It%20Actually%20Says&body=Matt%20Shumer%27s%20Viral%20AI%20Essay%20Hit%2082%20Million%20Views%20%E2%80%94%20Here%27s%20What%20It%20Actually%20Says%0Ahttps%3A//www.cnbc.com/2026/02/13/investor-matt-shumer-says-viral-essay-wasnt-meant-to-scare-people.html%0A%0AThe%20investor%27s%20essay%20describing%20how%202026%20AI%20models%20%27fundamentally%20changed%20his%20workflow%27%20exploded%20across%20social%20media.%20His%20core%20message%3A%20AI%20isn%27t%20just%20a%20productivity%20booster%20anymore%20%E2%80%94%20it%27s%20a%20direct%20substitute%20for%20technical%20work%2C%20and%20people%20should%20start%20experimenting%20now." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:3px 9px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
-      </div>
-      <p>The investor's essay describing how 2026 AI models 'fundamentally changed his workflow' exploded across social media. His core message: AI isn't just a productivity booster anymore — it's a direct substitute for technical work, and people should start experimenting now.</p>
+      <p>AI lowers the cost of building businesses but raises the bar for sustaining advantage — meaning more volatility, less concentration, and durable value shifting to physical infrastructure and regulatory barriers. A clean framework in 200 words.</p>
     </div>
 
     <div class="card">
@@ -264,41 +238,69 @@
         <span class="tag"
           style="--tag-bg:#FAEEDA;--tag-tc:#633806;--tag-dbg:#633806;--tag-dtc:#FAC775"
         >Economics</span>
-        <span class="source">Harvard Business School</span>
+        <span class="source">Marginal Revolution</span>
       </div>
-      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
-        <h2 style="flex:1"><a href="https://www.hbs.edu/bigs/bigs-what-to-watch-in-2026" target="_blank" rel="noopener noreferrer">What Harvard Experts Are Watching in 2026: The 'AI Satisfaction Gap' and Other Emerging Challenges</a></h2>
-        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20What%20Harvard%20Experts%20Are%20Watching%20in%202026%3A%20The%20%27AI%20Satisfaction%20Gap%27%20and%20Other%20Emerging%20Challenges&body=What%20Harvard%20Experts%20Are%20Watching%20in%202026%3A%20The%20%27AI%20Satisfaction%20Gap%27%20and%20Other%20Emerging%20Challenges%0Ahttps%3A//www.hbs.edu/bigs/bigs-what-to-watch-in-2026%0A%0ATen%20faculty%20essays%20on%202026%27s%20key%20management%20challenges.%20The%20standout%3A%20AI%20boosts%20performance%20but%20tanks%20satisfaction%20%E2%80%94%20employees%20retain%20less%20knowledge%2C%20creativity%20converges%2C%20and%20people%20feel%20worse%20about%20AI-produced%20outcomes%20even%20when%20they%27re%20objectively%20better." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:3px 9px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <h2 style="flex:1;min-width:0"><a href="https://marginalrevolution.com/marginalrevolution/2026/03/monday-assorted-links-552.html" target="_blank" rel="noopener noreferrer" style="display:inline">New Work vs. Automation: How Expertise Premiums Counterbalance Job Displacement</a></h2>
+        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20New%20Work%20vs.%20Automation%3A%20How%20Expertise%20Premiums%20Counterbalance%20Job%20Displacement&body=New%20Work%20vs.%20Automation%3A%20How%20Expertise%20Premiums%20Counterbalance%20Job%20Displacement%0Ahttps%3A//marginalrevolution.com/marginalrevolution/2026/03/monday-assorted-links-552.html%0A%0ALinked%20research%20finding%20that%20new%20work%20creates%20not%20just%20additional%20employment%20but%20entirely%20new%20domains%20of%20human%20expertise%20that%20command%20market%20premiums%20%E2%80%94%20a%20counterintuitive%20Freakonomics-style%20insight%20into%20the%20AI%20labor%20debate." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
       </div>
-      <p>Ten faculty essays on 2026's key management challenges. The standout: AI boosts performance but tanks satisfaction — employees retain less knowledge, creativity converges, and people feel worse about AI-produced outcomes even when they're objectively better.</p>
+      <p>Linked research finding that new work creates not just additional employment but entirely new domains of human expertise that command market premiums — a counterintuitive Freakonomics-style insight into the AI labor debate.</p>
     </div>
 
     <div class="card">
       <div class="card-meta">
         <span class="tag"
-          style="--tag-bg:#FAECE7;--tag-tc:#993C1D;--tag-dbg:#712B13;--tag-dtc:#F5C4B3"
-        >Games</span>
-        <span class="source">PC Gamer</span>
+          style="--tag-bg:#E6F1FB;--tag-tc:#0C447C;--tag-dbg:#0C447C;--tag-dtc:#B5D4F4"
+        >Visuals</span>
+        <span class="source">ScienceDaily / NASA</span>
       </div>
-      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
-        <h2 style="flex:1"><a href="https://www.pcgamer.com/games/new-pc-games-2026/" target="_blank" rel="noopener noreferrer">Crimson Desert Preview: A 'Moonshine Mix Between Breath of the Wild and Dragon's Dogma 2'</a></h2>
-        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20Crimson%20Desert%20Preview%3A%20A%20%27Moonshine%20Mix%20Between%20Breath%20of%20the%20Wild%20and%20Dragon%27s%20Dogma%202%27&body=Crimson%20Desert%20Preview%3A%20A%20%27Moonshine%20Mix%20Between%20Breath%20of%20the%20Wild%20and%20Dragon%27s%20Dogma%202%27%0Ahttps%3A//www.pcgamer.com/games/new-pc-games-2026/%0A%0APearl%20Abyss%27s%20singleplayer%20action%20RPG%20looks%20even%20prettier%20than%20Black%20Desert%20Online%20and%20plays%20like%20a%20fusion%20of%20open-world%20exploration%20and%20weighty%20combat%20systems.%20Early%20hands-on%20reports%20suggest%20it%20delivers%20on%20the%20%27deep%20systems%20with%20strong%20world-building%27%20promise." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:3px 9px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <h2 style="flex:1;min-width:0"><a href="https://www.sciencedaily.com/releases/2026/03/260317015938.htm" target="_blank" rel="noopener noreferrer" style="display:inline">NASA's Webb Captures the 'Exposed Cranium' Nebula: A Brain-Shaped Cloud Around a Dying Star</a></h2>
+        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20NASA%27s%20Webb%20Captures%20the%20%27Exposed%20Cranium%27%20Nebula%3A%20A%20Brain-Shaped%20Cloud%20Around%20a%20Dying%20Star&body=NASA%27s%20Webb%20Captures%20the%20%27Exposed%20Cranium%27%20Nebula%3A%20A%20Brain-Shaped%20Cloud%20Around%20a%20Dying%20Star%0Ahttps%3A//www.sciencedaily.com/releases/2026/03/260317015938.htm%0A%0AJWST%27s%20latest%20image%20reveals%20a%20planetary%20nebula%20that%20eerily%20resembles%20a%20brain%20inside%20a%20transparent%20skull%2C%20with%20a%20dark%20lane%20splitting%20it%20into%20hemispheres.%20Genuinely%20surreal%20cosmic%20photography." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
       </div>
-      <p>Pearl Abyss's singleplayer action RPG looks even prettier than Black Desert Online and plays like a fusion of open-world exploration and weighty combat systems. Early hands-on reports suggest it delivers on the 'deep systems with strong world-building' promise.</p>
+      <p>JWST's latest image reveals a planetary nebula that eerily resembles a brain inside a transparent skull, with a dark lane splitting it into hemispheres. Genuinely surreal cosmic photography.</p>
     </div>
 
     <div class="card">
       <div class="card-meta">
         <span class="tag"
-          style="--tag-bg:#EEEDFE;--tag-tc:#3C3489;--tag-dbg:#3C3489;--tag-dtc:#CECBF6"
-        >Movies & Shows</span>
-        <span class="source">The Film Stage</span>
+          style="--tag-bg:#E6F1FB;--tag-tc:#0C447C;--tag-dbg:#0C447C;--tag-dtc:#B5D4F4"
+        >Visuals</span>
+        <span class="source">NASA Science</span>
       </div>
-      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
-        <h2 style="flex:1"><a href="https://thefilmstage.com/10-films-to-see-in-march-2026/" target="_blank" rel="noopener noreferrer">Christian Petzold's Miroirs No. 3 Is One Critic's Favorite Film of 2026 So Far</a></h2>
-        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20Christian%20Petzold%27s%20Miroirs%20No.%203%20Is%20One%20Critic%27s%20Favorite%20Film%20of%202026%20So%20Far&body=Christian%20Petzold%27s%20Miroirs%20No.%203%20Is%20One%20Critic%27s%20Favorite%20Film%20of%202026%20So%20Far%0Ahttps%3A//thefilmstage.com/10-films-to-see-in-march-2026/%0A%0AThe%20Paula%20Beer-led%20drama%20from%20the%20director%20of%20Barbara%20and%20Undine%20premiered%20at%20Cannes%20and%20is%20getting%20a%20stateside%20release%20this%20month.%20Textbook%20Petzold%3A%20enigmatic%2C%20gripping%2C%20and%20deliberately%20mysterious%20%E2%80%94%20don%27t%20expect%20all%20the%20answers." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:3px 9px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <h2 style="flex:1;min-width:0"><a href="https://science.nasa.gov/mission/webb/" target="_blank" rel="noopener noreferrer" style="display:inline">James Webb Space Telescope Reveals a 3D View of Uranus's Ionosphere</a></h2>
+        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20James%20Webb%20Space%20Telescope%20Reveals%20a%203D%20View%20of%20Uranus%27s%20Ionosphere&body=James%20Webb%20Space%20Telescope%20Reveals%20a%203D%20View%20of%20Uranus%27s%20Ionosphere%0Ahttps%3A//science.nasa.gov/mission/webb/%0A%0AWebb%27s%20first%20vertical%20mapping%20of%20an%20ice%20giant%27s%20atmosphere%20shows%20temperature%20gradients%2C%20auroras%2C%20and%20long-term%20cooling%20patterns.%20A%20reminder%20that%20our%20own%20solar%20system%20still%20holds%20genuine%20mysteries." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
       </div>
-      <p>The Paula Beer-led drama from the director of Barbara and Undine premiered at Cannes and is getting a stateside release this month. Textbook Petzold: enigmatic, gripping, and deliberately mysterious — don't expect all the answers.</p>
+      <p>Webb's first vertical mapping of an ice giant's atmosphere shows temperature gradients, auroras, and long-term cooling patterns. A reminder that our own solar system still holds genuine mysteries.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-meta">
+        <span class="tag"
+          style="--tag-bg:#FBEAF0;--tag-tc:#72243E;--tag-dbg:#72243E;--tag-dtc:#F4C0D1"
+        >Trends & Ideas</span>
+        <span class="source">Trend Hunter</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <h2 style="flex:1;min-width:0"><a href="https://www.trendhunter.com/slideshow/march-2026-social-media" target="_blank" rel="noopener noreferrer" style="display:inline">March 2026 Social Media Trends Shift Toward AI-Enhanced Interactivity and Niche Communities</a></h2>
+        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20March%202026%20Social%20Media%20Trends%20Shift%20Toward%20AI-Enhanced%20Interactivity%20and%20Niche%20Communities&body=March%202026%20Social%20Media%20Trends%20Shift%20Toward%20AI-Enhanced%20Interactivity%20and%20Niche%20Communities%0Ahttps%3A//www.trendhunter.com/slideshow/march-2026-social-media%0A%0AA%20substantive%20breakdown%20of%20how%20platforms%20are%20moving%20from%20passive%20scrolling%20to%20participatory%20engagement%20%E2%80%94%20with%20examples%20like%20Gucci%27s%20AI%20lens%20on%20Snapchat%20and%20Happy%20Feed%27s%20minimalist%20alternative%20to%20microblogging." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
+      </div>
+      <p>A substantive breakdown of how platforms are moving from passive scrolling to participatory engagement — with examples like Gucci's AI lens on Snapchat and Happy Feed's minimalist alternative to microblogging.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-meta">
+        <span class="tag"
+          style="--tag-bg:#FBEAF0;--tag-tc:#72243E;--tag-dbg:#72243E;--tag-dtc:#F4C0D1"
+        >Trends & Ideas</span>
+        <span class="source">Marginal Revolution</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <h2 style="flex:1;min-width:0"><a href="https://marginalrevolution.com/marginalrevolution/2026/03/monday-assorted-links-552.html" target="_blank" rel="noopener noreferrer" style="display:inline">Framing What We Need to Build Around AI: A New Essay Getting Attention</a></h2>
+        <a href="mailto:karim.oussayef@gmail.com?subject=Read%20later%3A%20Framing%20What%20We%20Need%20to%20Build%20Around%20AI%3A%20A%20New%20Essay%20Getting%20Attention&body=Framing%20What%20We%20Need%20to%20Build%20Around%20AI%3A%20A%20New%20Essay%20Getting%20Attention%0Ahttps%3A//marginalrevolution.com/marginalrevolution/2026/03/monday-assorted-links-552.html%0A%0ATyler%20Cowen%20flags%20an%20essay%20attempting%20to%20frame%20the%20infrastructure%2C%20policy%2C%20and%20social%20structures%20required%20as%20AI%20advances.%20The%20kind%20of%20serious%20speculative%20thinking%20that%27s%20circulating%20in%20smart%20circles%20right%20now." title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
+      </div>
+      <p>Tyler Cowen flags an essay attempting to frame the infrastructure, policy, and social structures required as AI advances. The kind of serious speculative thinking that's circulating in smart circles right now.</p>
     </div>
 </main>
 <footer>Refreshed twice daily. Links open in a new tab.</footer>
