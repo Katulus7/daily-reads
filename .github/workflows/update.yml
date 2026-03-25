@@ -2,8 +2,7 @@ name: Curate Links
 
 on:
   schedule:
-    - cron: '0 8 * * *'    # 8:00 AM UTC  (4am ET / 1am PT)
-    - cron: '0 20 * * *'   # 8:00 PM UTC  (4pm ET / 1pm PT)
+    - cron: '0 11 * * *'   # 6:00 AM ET (11am UTC)
   workflow_dispatch:        # also triggerable manually from the Actions tab
 
 permissions:
