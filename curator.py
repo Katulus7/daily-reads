@@ -115,17 +115,56 @@ CATEGORIES = [
     "Trends & Ideas",
 ]
 
-NUM_LINKS  = 12
+NUM_LINKS   = 12
+SEEN_FILE   = Path(__file__).parent / "seen.json"
+SEEN_DAYS   = 7
 OUTPUT_FILE = Path(__file__).parent / "index.html"
+
+
+# ─────────────────────────────────────────────────────────────────
+# Seen-links tracker (7-day rolling deduplication)
+# ─────────────────────────────────────────────────────────────────
+
+def load_seen() -> list[dict]:
+    """Load seen entries, pruning anything older than SEEN_DAYS days."""
+    if not SEEN_FILE.exists():
+        return []
+    entries = json.loads(SEEN_FILE.read_text())
+    cutoff  = (datetime.now(timezone.utc).date() - __import__('datetime').timedelta(days=SEEN_DAYS)).isoformat()
+    return [e for e in entries if e.get("date", "") >= cutoff]
+
+
+def save_seen(existing: list[dict], new_links: list[dict]) -> None:
+    """Append today's links to the seen list and save."""
+    today = datetime.now(timezone.utc).date().isoformat()
+    for link in new_links:
+        existing.append({
+            "date":  today,
+            "url":   link["url"],
+            "title": link["title"],
+        })
+    SEEN_FILE.write_text(json.dumps(existing, indent=2), encoding="utf-8")
+
+
+def format_seen_for_prompt(seen: list[dict]) -> str:
+    if not seen:
+        return ""
+    lines = "\n".join(f'  - {e["title"]} ({e["url"]})' for e in seen)
+    return f"""
+IMPORTANT — do NOT repeat any of the following links or topics that have already been
+featured in the last {SEEN_DAYS} days. Find genuinely fresh content instead:
+{lines}
+"""
 
 
 # ─────────────────────────────────────────────────────────────────
 # Agent — calls Claude with web_search
 # ─────────────────────────────────────────────────────────────────
 
-def build_prompt() -> str:
-    today = datetime.now(timezone.utc).strftime("%A, %B %d, %Y")
-    cats  = " | ".join(CATEGORIES)
+def build_prompt(seen: list[dict]) -> str:
+    today     = datetime.now(timezone.utc).strftime("%A, %B %d, %Y")
+    cats      = " | ".join(CATEGORIES)
+    seen_note = format_seen_for_prompt(seen)
     return f"""Today is {today}. You are an expert content curator with refined taste.
 
 Search the web across multiple queries to find exactly {NUM_LINKS} genuinely interesting
@@ -133,7 +172,7 @@ links that would resonate with the reader described below. Spread picks across t
 different interest areas — don't cluster everything in one topic.
 
 {TASTE_PROFILE}
-
+{seen_note}
 For each candidate: verify the URL resolves, the article was published recently (last
 72h for news/blogs; last 2 weeks for research papers or slower-moving topics), and the
 content matches your description. Prefer depth over virality.
@@ -150,7 +189,7 @@ Return ONLY a valid JSON array — no preamble, no markdown fences, no commentar
 ]"""
 
 
-def fetch_links() -> list[dict]:
+def fetch_links(seen: list[dict]) -> list[dict]:
     """Run the Claude curator agent and return a list of link dicts."""
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
@@ -158,7 +197,7 @@ def fetch_links() -> list[dict]:
         model="claude-opus-4-5",
         max_tokens=4000,
         tools=[{"type": "web_search_20250305", "name": "web_search"}],
-        messages=[{"role": "user", "content": build_prompt()}],
+        messages=[{"role": "user", "content": build_prompt(seen)}],
     )
 
     # web_search_20250305 is handled server-side — the final text block
@@ -243,9 +282,9 @@ def render_html(links: list[dict]) -> str:
         >{cat}</span>
         <span class="source">{link.get('source','')}</span>
       </div>
-      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
-        <h2 style="flex:1"><a href="{url}" target="_blank" rel="noopener noreferrer">{title}</a></h2>
-        <a href="{mailto}" title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:3px 9px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <h2 style="flex:1;min-width:0"><a href="{url}" target="_blank" rel="noopener noreferrer" style="display:inline">{title}</a></h2>
+        <a href="{mailto}" title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
       </div>
       <p>{desc}</p>
     </div>""")
@@ -288,23 +327,25 @@ def render_html(links: list[dict]) -> str:
   header {{
     max-width: 720px;
     margin: 0 auto;
-    padding: 52px 24px 28px;
+    padding: 36px 24px 24px;
     border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 24px;
-    flex-wrap: wrap;
   }}
   header h1 {{
     font-size: 20px;
     font-weight: 500;
     letter-spacing: -0.3px;
+    margin-bottom: 10px;
+  }}
+  .header-controls {{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
   }}
   header .meta {{
     font-size: 12px;
     color: var(--muted);
-    white-space: nowrap;
+    flex: 1;
   }}
   main {{
     max-width: 720px;
@@ -377,10 +418,10 @@ def render_html(links: list[dict]) -> str:
 <body>
 <header>
   <h1>Karim's Daily Reads</h1>
-  <div style="display:flex;align-items:center;gap:16px">
-    <div style="display:flex;align-items:center;gap:4px">
-      <button onclick="adjustFont(-1)" style="background:none;border:1px solid var(--border);border-radius:6px;color:var(--muted);cursor:pointer;font-size:13px;padding:3px 9px;line-height:1">A−</button>
-      <button onclick="adjustFont(1)"  style="background:none;border:1px solid var(--border);border-radius:6px;color:var(--muted);cursor:pointer;font-size:15px;padding:3px 9px;line-height:1">A+</button>
+  <div class="header-controls">
+    <div style="display:flex;align-items:center;gap:6px">
+      <button onclick="adjustFont(-1)" style="background:none;border:1px solid var(--border);border-radius:8px;color:var(--muted);cursor:pointer;font-size:15px;padding:6px 14px;line-height:1;-webkit-tap-highlight-color:transparent">A−</button>
+      <button onclick="adjustFont(1)"  style="background:none;border:1px solid var(--border);border-radius:8px;color:var(--muted);cursor:pointer;font-size:18px;padding:6px 14px;line-height:1;-webkit-tap-highlight-color:transparent">A+</button>
     </div>
     <span class="meta">Updated {timestamp} · Curated by Claude</span>
   </div>
@@ -414,9 +455,16 @@ def render_html(links: list[dict]) -> str:
 # ─────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
+    print("Loading seen links…")
+    seen  = load_seen()
+    print(f"  {len(seen)} links seen in last {SEEN_DAYS} days.")
+
     print("Fetching curated links…")
-    links = fetch_links()
+    links = fetch_links(seen)
     print(f"  Got {len(links)} links.")
+
+    save_seen(seen, links)
+    print(f"  Updated → {SEEN_FILE}")
 
     html = render_html(links)
     OUTPUT_FILE.write_text(html, encoding="utf-8")
