@@ -87,6 +87,23 @@ category beats five mediocre ones.
 Hard avoids across all categories: celebrity gossip, sports scores, crypto speculation,
 political hot takes, SEO listicles, press-release rewrites, anything that exists purely
 to generate clicks.
+
+NEVER link to these domains — they are known for interstitial ads, auto-playing video,
+aggressive paywalls, or just low quality:
+  forbes.com, businessinsider.com, insider.com, cnet.com, screenrant.com, cbr.com,
+  mashable.com, buzzfeed.com, buzzfeednews.com, theclicker.com, gamerant.com,
+  fandom.com, wikia.com, complex.com, ranker.com, menshealth.com, popsugar.com,
+  thedailybeast.com, salon.com, huffpost.com, nypost.com, dailymail.co.uk,
+  mirror.co.uk, the-sun.com, tmz.com, people.com, eonline.com, tvline.com,
+  comingsoon.net, movieweb.com, collider.com (acceptable for some articles but
+  often has autoplaying video — skip if alternatives exist).
+
+PREFER these source types — known for clean reading experiences:
+  Substack newsletters, The Atlantic, Ars Technica, Kottke.org, Daring Fireball,
+  The Verge (features only), Polygon (features only), Eurogamer, Rock Paper Shotgun,
+  publisher/studio official sites, YouTube (for visual content), Vimeo, NASA.gov,
+  ESA.int, NationalGeographic.com, NPR, BBC (features), LitHub, The Guardian (features),
+  academic or institutional sites, personal blogs with strong reputations.
 """
 
 CATEGORIES = [
@@ -210,17 +227,28 @@ def render_html(links: list[dict]) -> str:
         light_bg, tc = CATEGORY_STYLES.get(cat,  ("#F1EFE8", "#444441"))
         dark_bg,  dtc = DARK_CATEGORY_STYLES.get(cat, ("#444441", "#D3D1C7"))
 
+        import urllib.parse
+        title = link['title']
+        url   = link['url']
+        desc  = link.get('description', '')
+        subject = urllib.parse.quote(f"Read later: {title}")
+        body    = urllib.parse.quote(f"{title}\n{url}\n\n{desc}")
+        mailto  = f"mailto:karim.oussayef@gmail.com?subject={subject}&body={body}"
+
         cards.append(f"""
-    <a href="{link['url']}" class="card" target="_blank" rel="noopener noreferrer">
+    <div class="card">
       <div class="card-meta">
         <span class="tag"
           style="--tag-bg:{light_bg};--tag-tc:{tc};--tag-dbg:{dark_bg};--tag-dtc:{dtc}"
         >{cat}</span>
         <span class="source">{link.get('source','')}</span>
       </div>
-      <h2>{link['title']}</h2>
-      <p>{link.get('description','')}</p>
-    </a>""")
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+        <h2 style="flex:1"><a href="{url}" target="_blank" rel="noopener noreferrer">{title}</a></h2>
+        <a href="{mailto}" title="Email to myself" style="flex-shrink:0;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:3px 9px;white-space:nowrap;transition:border-color 0.12s" onmouseover="this.style.borderColor='var(--hover)'" onmouseout="this.style.borderColor='var(--border)'">✉ Send</a>
+      </div>
+      <p>{desc}</p>
+    </div>""")
 
     cards_html = "\n".join(cards)
 
@@ -235,7 +263,7 @@ def render_html(links: list[dict]) -> str:
     --bg:      #faf9f7;
     --surface: #ffffff;
     --text:    #1a1a18;
-    --muted:   #6b6b67;
+    --muted:   #9a9994;
     --border:  rgba(0,0,0,0.08);
     --hover:   rgba(0,0,0,0.14);
     --radius:  12px;
@@ -245,7 +273,7 @@ def render_html(links: list[dict]) -> str:
       --bg:      #111113;
       --surface: #1c1c1e;
       --text:    #e4e2da;
-      --muted:   #8c8a82;
+      --muted:   #6e6c66;
       --border:  rgba(255,255,255,0.08);
       --hover:   rgba(255,255,255,0.15);
     }}
@@ -291,11 +319,16 @@ def render_html(links: list[dict]) -> str:
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 18px 22px 20px;
+  }}
+  h2 a {{
+    color: var(--text);
     text-decoration: none;
-    color: inherit;
+    border-bottom: 1px solid var(--border);
     transition: border-color 0.12s;
   }}
-  .card:hover {{ border-color: var(--hover); }}
+  h2 a:hover {{
+    border-bottom-color: var(--text);
+  }}
   .card-meta {{
     display: flex;
     align-items: center;
@@ -303,7 +336,7 @@ def render_html(links: list[dict]) -> str:
     margin-bottom: 9px;
   }}
   .tag {{
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.2px;
     padding: 3px 8px;
@@ -318,7 +351,7 @@ def render_html(links: list[dict]) -> str:
     }}
   }}
   .source {{
-    font-size: 13px;
+    font-size: 14px;
     color: var(--muted);
   }}
   h2 {{
@@ -344,12 +377,34 @@ def render_html(links: list[dict]) -> str:
 <body>
 <header>
   <h1>Karim's Daily Reads</h1>
-  <span class="meta">Updated {timestamp} · Curated by Claude</span>
+  <div style="display:flex;align-items:center;gap:16px">
+    <div style="display:flex;align-items:center;gap:4px">
+      <button onclick="adjustFont(-1)" style="background:none;border:1px solid var(--border);border-radius:6px;color:var(--muted);cursor:pointer;font-size:13px;padding:3px 9px;line-height:1">A−</button>
+      <button onclick="adjustFont(1)"  style="background:none;border:1px solid var(--border);border-radius:6px;color:var(--muted);cursor:pointer;font-size:15px;padding:3px 9px;line-height:1">A+</button>
+    </div>
+    <span class="meta">Updated {timestamp} · Curated by Claude</span>
+  </div>
 </header>
 <main>
 {cards_html}
 </main>
 <footer>Refreshed twice daily. Links open in a new tab.</footer>
+<script>
+  const SIZES = [14, 16, 18, 20, 22];
+  let idx = parseInt(localStorage.getItem('font-idx') ?? '1');
+  function applySize() {{
+    document.documentElement.style.setProperty('--base', SIZES[idx] + 'px');
+    document.querySelectorAll('h2').forEach(el => el.style.fontSize = (SIZES[idx] + 2) + 'px');
+    document.querySelectorAll('p').forEach(el => el.style.fontSize = SIZES[idx] + 'px');
+    document.querySelectorAll('.source').forEach(el => el.style.fontSize = (SIZES[idx] - 2) + 'px');
+  }}
+  function adjustFont(dir) {{
+    idx = Math.max(0, Math.min(SIZES.length - 1, idx + dir));
+    localStorage.setItem('font-idx', idx);
+    applySize();
+  }}
+  applySize();
+</script>
 </body>
 </html>"""
 
